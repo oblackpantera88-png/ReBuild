@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReBuild Imóveis</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: black;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 20px 0;
+            border-bottom: 2px solid #ff6600;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero button {
+            margin-top: 25px;
+            padding: 15px 35px;
+            border: none;
+            background: #ff6600;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            background: #e65c00;
+            transform: scale(1.05);
+        }
+
+        .Destaques {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .Destaques h2 {
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .cards {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            color: black;
+            padding: 0;
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card span {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ff6600;
+        }
+
+        .sobre {
+            background: #1a1a1a;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .sobre h2 {
+            color: #ff6600;
+            margin-bottom: 20px;
+        }
+
+        .sobre p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .contato {
+            padding: 80px 0;
+            background-color: #000;
+        }
+
+        .contato h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contato-wrapper {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contato-form {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            min-width: 300px;
+        }
+
+        .contato-form input, 
+        .contato-form textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background: #1e1e1e;
+            color: white;
+        }
+
+        .contato-form input:focus, 
+        .contato-form textarea:focus {
+            outline: none;
+            border-color: #ff6600;
+        }
+
+        .btn-enviar {
+            padding: 15px;
+            background: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-enviar:hover {
+            background: #e65c00;
+        }
+
+        .contato-info {
+            flex: 1;
+            min-width: 250px;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #ff6600;
+        }
+
+        .contato-info h3 {
+            color: #ff6600;
+            margin-bottom: 15px;
+        }
+
+        .contato-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        footer {
+            background: #111;
+            color: #666;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #222;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .contato-wrapper {
+                flex-direction: column;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>ReBuild Imóveis</h1>
+            <nav>
+                <a href="#destaques">Imóveis</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Transforme Ruínas em Oportunidades</h2>
+            <p>Imóveis estratégicos e galpões industriais prontos para grandes projetos.</p>
+
+        </div>
+    </section>
+
+    <section id="destaques" class="Destaques">
+        <div class="container">
+            <h2>imoveis disponiveis</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\Edifícios_industriais_da_Rua_Borges_de_Figueiredo_07.jpg" alt="Galpão Industrial">
+                    <div class="card-content">
+                        <h3>Galpão Industrial</h3>
+                        <p>Área ampla de 5.000m², ideal para logística ou retrofit moderno.</p>
+                        <span>R$ 61.500.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\gasometro146a152.jpg" alt="Prédio Comercial">
+                    <div class="card-content">
+                        <h3>Prédio Comercial Antigo</h3>
+                        <p>Patrimônio histórico com viabilidade para escritórios de alto padrão.</p>
+                        <span>R$ 85.200.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\508623867405033.jpg" alt="Terreno">
+                    <div class="card-content">
+                        <h3>Terreno com Estrutura</h3>
+                        <p>Localização privilegiada para expansão de redes de varejo.</p>
+                        <span>R$ 45.800.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\hq720.jpg" alt="Usina Desativada">
+                    <div class="card-content">
+                        <h3>Usina Desativada</h3>
+                        <p>Antiga usina têxtil com estrutura metálica preservada para lofts industriais.</p>
+                        <span>R$ 41.000.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\derelict-warehouse-north-vancouver.jpg" alt="Armazém">
+                    <div class="card-content">
+                        <h3>Armazém</h3>
+                        <p>Localizado na zona de revitalização, perfeito para fins culturais ou economicos.</p>
+                        <span>R$ 90.900.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\abandoned-parking-garage-v0-h8g7frdc4tof1.jpg" alt="Estacionamento">
+                    <div class="card-content">
+                        <h3>Estacionamento</h3>
+                        <p>Estrutura robusta no centro financeiro. Ótimo para conversão em Data Center.</p>
+                        <span>R$ 37.400.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\Pinheirao-abandonado-18.webp" alt="Estadio">
+                    <div class="card-content">
+                        <h3>Estadio abandonado</h3>
+                        <p>Ampla área verde e grama natural. Potencial para um novo estadio ou parque de eventos.</p>
+                        <span>R$ 1.250.000.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\hq720 (1).jpg" alt="Motel">
+                    <div class="card-content">
+                        <h3>Motel</h3>
+                        <p>Localização estratégica em ponto ferroviário no interior do estado.</p>
+                        <span>R$ 44.600.000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\PC 15 - Subsequente\Desktop\REbuyld\imagem\images1.jpg" alt="Posto de gasolina">
+                    <div class="card-content">
+                        <h3>Posto de gasolina</h3>
+                        <p>Pé direito duplo e piso reforçado. Pronto para indústrias de usinagem pesada.</p>
+                        <span>R$ 43.300.000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre">
+            <div class="container">
+                <h2>Sobre nós</h2>
+                <p>
+                    Na <strong>ReBuild Imóveis</strong>, acreditamos que o valor de um imóvel não está apenas no seu estado atual, mas no seu potencial futuro. 
+                    Especializados em ativos inabitáveis e áreas industriais, somos o elo entre o abandono urbano e o desenvolvimento econômico.
+                </p>
+            </div>
+        </section>
+
+        <section id="contato" class="contato">
+            <div class="container">
+                <h2>Contato</h2>
+                <div class="contato-wrapper">
+                    <form class="contato-form">
+                        <input type="text" placeholder="Nome Completo" required>
+                        <input type="email" placeholder="E-mail Corporativo" required>
+                        <textarea rows="6" placeholder="Descreva seu interesse ou agende uma visita técnica" required></textarea>
+                        <button type="submit" class="btn-enviar">Solicitar Informações</button>
+                    </form>
+
+                    <div class="contato-info">
+                        <h3>Escritório Central</h3>
+                        <p>ETE Senador wilson campos</p>
+                        <p>Paudalho - PE</p>
+                        <br>
+                        <h3>Canais de Venda</h3>
+                        <p><strong>Telefone:</strong> (81) 2302-8955</p>
+                        <p><strong>E-mail:</strong> comercial@rebuild.com.br</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 ReBuild Imóveis - Excelência em Ativos Imobiliários de Alto Impacto</p>
+        </footer>
+
+    </body>
+    </html>
